@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,5 +42,11 @@ public class TaskController {
 		public ResponseEntity<Task> getByIndex(@PathVariable Integer taskId) {
 			return new ResponseEntity<Task>(this.service.getById(taskId), HttpStatus.OK);
 		}
+		
+		// UPDATE
+		@PutMapping("/updateTask/{taskId}")
+	    public ResponseEntity<Task> updateTask(@PathVariable Integer taskId, @RequestBody Task task) {
+	        return new ResponseEntity<Task>(this.service.updateTask(taskId, task), HttpStatus.ACCEPTED);
+	    }
 		
 }
