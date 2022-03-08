@@ -1,8 +1,12 @@
 package com.thou.takefive.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,4 +30,16 @@ public class TaskController {
 			return new ResponseEntity<Task>(this.service.createTask(task), HttpStatus.CREATED);
 		}
 
+		// READ ALL
+		@GetMapping("/readAllTasks")
+		public ResponseEntity<List<Task>> getAll() {
+			return new ResponseEntity<List<Task>>(this.service.getAllTasks(), HttpStatus.OK);
+		}
+		
+		// READ BY ID
+		@GetMapping("/readByTaskId/{taskId}")
+		public ResponseEntity<Task> getByIndex(@PathVariable Integer taskId) {
+			return new ResponseEntity<Task>(this.service.getById(taskId), HttpStatus.OK);
+		}
+		
 }
