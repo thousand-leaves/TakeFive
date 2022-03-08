@@ -20,9 +20,9 @@ public class PersonServiceUnitTest {
 		private PersonService service;
 		
 		@MockBean
-		private PersonRepo repo;
+		private 	PersonRepo repo;
 		
-		// Create Test
+		// Create Person Test
 		@Test
 		void testCreate() {
 			// Given
@@ -36,7 +36,7 @@ public class PersonServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).save(toSave);
 		}
 		
-		// Read by ID Test
+		// Read Person by ID Test
 		@Test
 		void testReadById() {
 			// Given
@@ -50,7 +50,7 @@ public class PersonServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 		}
 		
-		// Read All Test
+		// Read All Persons Test
 		@Test
 		void testReadAll() {
 			// Given
@@ -66,7 +66,7 @@ public class PersonServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).findAll();
 		}
 		
-		// Update Test
+		// Update Person Test
 		@Test
 		void testUpdate() {
 			
@@ -86,7 +86,7 @@ public class PersonServiceUnitTest {
 					
 		}
 		
-		// Delete Test
+		// Delete Person by ID Test
 		@Test
 		void testDelete() {
 			// Given
