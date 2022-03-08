@@ -36,6 +36,18 @@ public class Task {
 		this.smartReward = smartReward;
 		this.creativeReward = creativeReward;
 	}
+	
+	public Task(String category, String description, int coinReward, int healthReward, int happyReward,
+			int smartReward, int creativeReward) {
+		super();
+		this.category = category;
+		this.description = description;
+		this.coinReward = coinReward;
+		this.healthReward = healthReward;
+		this.happyReward = happyReward;
+		this.smartReward = smartReward;
+		this.creativeReward = creativeReward;
+	}
 
 	// Getters and Setters
 	public int getTaskId() {

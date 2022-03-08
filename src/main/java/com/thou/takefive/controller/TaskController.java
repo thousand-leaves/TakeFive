@@ -26,31 +26,31 @@ public class TaskController {
 		this.service = service;
 	}
 		
-		// CREATE
+		// CREATE TASK
 		@PostMapping("/createTask")
 		public ResponseEntity<Task> createTask(@RequestBody Task task) {
 			return new ResponseEntity<Task>(this.service.createTask(task), HttpStatus.CREATED);
 		}
 
-		// READ ALL
+		// READ ALL TASKS
 		@GetMapping("/readAllTasks")
 		public ResponseEntity<List<Task>> getAll() {
 			return new ResponseEntity<List<Task>>(this.service.getAllTasks(), HttpStatus.OK);
 		}
 		
-		// READ BY ID
+		// READ TASK BY ID
 		@GetMapping("/readByTaskId/{taskId}")
 		public ResponseEntity<Task> getByIndex(@PathVariable Integer taskId) {
 			return new ResponseEntity<Task>(this.service.getById(taskId), HttpStatus.OK);
 		}
 		
-		// UPDATE
+		// UPDATE TASK
 		@PutMapping("/updateTask/{taskId}")
 	    public ResponseEntity<Task> updateTask(@PathVariable Integer taskId, @RequestBody Task task) {
 	        return new ResponseEntity<Task>(this.service.updateTask(taskId, task), HttpStatus.ACCEPTED);
 	    }
 		
-	    // DELETE BY ID
+	    // DELETE TASK BY ID
 	    @DeleteMapping("/deleteTask/{taskId}")
 	    public ResponseEntity<Boolean> deleteByIndex(@PathVariable Integer taskId) {
 	        boolean hasDeleted = this.service.deleteTask(taskId);
