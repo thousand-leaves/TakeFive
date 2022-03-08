@@ -34,4 +34,23 @@ public class TaskService {
 	public Task getById(Integer taskId) {
 		return this.repo.findById(taskId).orElseThrow(() -> new EntityNotFoundException("Can't find that task"));
 	}
+	
+	// UPDATE
+	public Task updateTask(Integer taskId, Task t) {
+		
+		// find person
+		Task foundTask = this.getById(taskId);
+		
+		// update info
+		foundTask.setCategory(t.getCategory());
+		foundTask.setDescription(t.getDescription());
+		foundTask.setCoinReward(t.getCoinReward());
+		foundTask.setHealthReward(t.getHealthReward());
+		foundTask.setHappyReward(t.getHappyReward());
+		foundTask.setSmartReward(t.getSmartReward());
+		foundTask.setCreativeReward(t.getCreativeReward());
+		
+		// save back to db
+		return this.repo.save(foundTask);
+	}
 }
