@@ -53,4 +53,10 @@ public class TaskService {
 		// save back to db
 		return this.repo.save(foundTask);
 	}
+	
+	// DELETE
+	public boolean deleteTask(Integer id) {
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
+	}
 }
