@@ -56,7 +56,7 @@ public class TaskController {
 	        boolean hasDeleted = this.service.deleteTask(taskId);
 	        
 	        if (hasDeleted) {
-	        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.OK);
+	        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
 	        } else {
 	        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.NOT_FOUND);
 	        }
