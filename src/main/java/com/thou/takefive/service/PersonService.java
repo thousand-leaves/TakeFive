@@ -36,20 +36,20 @@ public class PersonService {
 	}
 	
 	// UPDATE
-	public Person updatePerson(Integer id, Person p) {
+	public Person updatePerson(Integer id, Person newValues) {
 		
 		// find person
 		Person foundPerson = this.getById(id);
 		
 		// update info
-		foundPerson.setName(p.getName());
-		foundPerson.setEmail(p.getEmail());
-		foundPerson.setAge(p.getAge());
-		foundPerson.setCoinLevel(p.getCoinLevel());
-		foundPerson.setHealthLevel(p.getHealthLevel());
-		foundPerson.setHappyLevel(p.getHappyLevel());
-		foundPerson.setSmartLevel(p.getSmartLevel());
-		foundPerson.setCreativeLevel(p.getCreativeLevel());
+		foundPerson.setName(newValues.getName());
+		foundPerson.setEmail(newValues.getEmail());
+		foundPerson.setAge(newValues.getAge());
+		foundPerson.setCoinLevel(newValues.getCoinLevel());
+		foundPerson.setHealthLevel(newValues.getHealthLevel());
+		foundPerson.setHappyLevel(newValues.getHappyLevel());
+		foundPerson.setSmartLevel(newValues.getSmartLevel());
+		foundPerson.setCreativeLevel(newValues.getCreativeLevel());
 		
 		// save back to db
 		return this.repo.save(foundPerson);
