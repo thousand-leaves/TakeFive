@@ -36,6 +36,20 @@ public class Person {
 		this.smartLevel = smartLevel;
 		this.creativeLevel = creativeLevel;
 	}
+	
+	public Person(String name, String email, int age, int coinLevel, int healthLevel, int happyLevel,
+			int smartLevel, int creativeLevel) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.age = age;
+		this.coinLevel = coinLevel;
+		this.healthLevel = healthLevel;
+		this.happyLevel = happyLevel;
+		this.smartLevel = smartLevel;
+		this.creativeLevel = creativeLevel;
+	}
+	
 
 	public int getId() {
 		return id;
@@ -109,6 +123,57 @@ public class Person {
 		this.creativeLevel = creativeLevel;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + coinLevel;
+		result = prime * result + creativeLevel;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + happyLevel;
+		result = prime * result + healthLevel;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + smartLevel;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (age != other.age)
+			return false;
+		if (coinLevel != other.coinLevel)
+			return false;
+		if (creativeLevel != other.creativeLevel)
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (happyLevel != other.happyLevel)
+			return false;
+		if (healthLevel != other.healthLevel)
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (smartLevel != other.smartLevel)
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {

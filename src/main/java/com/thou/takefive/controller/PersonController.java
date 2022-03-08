@@ -56,7 +56,7 @@ public class PersonController {
         boolean hasDeleted = this.service.deletePerson(id);
         
         if (hasDeleted) {
-        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.OK);
+        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
         } else {
         	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.NOT_FOUND);
         }
