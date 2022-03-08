@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.thou.takefive.entity.Person;
 import com.thou.takefive.entity.Task;
 import com.thou.takefive.repo.TaskRepo;
 
