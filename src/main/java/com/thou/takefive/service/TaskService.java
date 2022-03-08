@@ -20,22 +20,22 @@ public class TaskService {
 		this.repo = repo;
 	}
 	
-	// CREATE
+	// CREATE A TASK
 	public Task createTask(Task t) {
 		return this.repo.save(t);
 	}
 
-	// READ ALL
+	// READ ALL TASKS
 	public List<Task> getAllTasks() {
 		return this.repo.findAll();
 	}
 	
-	// READ BY ID
+	// READ TASK BY ID
 	public Task getById(Integer taskId) {
 		return this.repo.findById(taskId).orElseThrow(() -> new EntityNotFoundException("Can't find that task"));
 	}
 	
-	// UPDATE
+	// UPDATE TASK BY ID
 	public Task updateTask(Integer taskId, Task t) {
 		
 		// find person
@@ -54,7 +54,7 @@ public class TaskService {
 		return this.repo.save(foundTask);
 	}
 	
-	// DELETE
+	// DELETE TASK BY ID
 	public boolean deleteTask(Integer id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
