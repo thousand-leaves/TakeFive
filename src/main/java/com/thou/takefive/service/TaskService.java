@@ -38,7 +38,7 @@ public class TaskService {
 	// UPDATE TASK BY ID
 	public Task updateTask(Integer taskId, Task t) {
 		
-		// find person
+		// find task
 		Task foundTask = this.getById(taskId);
 		
 		// update info
@@ -58,5 +58,10 @@ public class TaskService {
 	public boolean deleteTask(Integer id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
+	}
+	
+	// RETURN RANDOM TASK
+	public Task doRandomTask() {
+		return this.repo.doRandomTask();
 	}
 }
