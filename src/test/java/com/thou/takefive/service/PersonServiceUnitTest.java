@@ -77,7 +77,7 @@ public class PersonServiceUnitTest {
 			Person postUpdate = new Person(1, "George", "ian@outlook.com", 100, 5, 20, 40, 200, 500);
 			// When
 			Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(savedPerson));
-			Mockito.when(this.repo.save(postUpdate)).thenReturn(postUpdate);
+			Mockito.when(this.repo.save(Mockito.any(Person.class))).thenReturn(postUpdate);
 			// Then
 			Assertions.assertThat(this.service.updatePerson(id, preUpdate)).isEqualTo(postUpdate);
 			//Verify

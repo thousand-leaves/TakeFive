@@ -77,7 +77,7 @@ public class TaskServiceUnitTest {
 		Task postUpdate = new Task(1, "clever", "Do this task", 10, 20, 30, 40, 50);
 		// When
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(savedTask));
-		Mockito.when(this.repo.save(postUpdate)).thenReturn(postUpdate);
+		Mockito.when(this.repo.save(Mockito.any(Task.class))).thenReturn(postUpdate);
 		// Then
 		Assertions.assertThat(this.service.updateTask(id, preUpdate)).isEqualTo(postUpdate);
 		//Verify
