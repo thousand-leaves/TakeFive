@@ -2,12 +2,11 @@ package com.thou.takefive.service;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thou.takefive.entity.Person;
+import com.thou.takefive.exceptions.PersonNotFoundException;
 import com.thou.takefive.repo.PersonRepo;
 
 @Service
@@ -32,7 +31,7 @@ public class PersonService {
 	
 	// READ BY ID
 	public Person getById(Integer id) {
-		return this.repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Can't find that person"));
+		return this.repo.findById(id).orElseThrow(() -> new PersonNotFoundException("Can't find that person"));
 	}
 	
 	// UPDATE
