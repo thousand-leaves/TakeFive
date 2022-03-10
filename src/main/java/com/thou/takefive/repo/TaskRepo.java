@@ -12,4 +12,5 @@ public interface TaskRepo extends JpaRepository<Task, Integer> {
 	// Return Random Task
 	@Query(value = "SELECT * FROM task ORDER BY rand() LIMIT 1", nativeQuery = true)
 	public Task doRandomTask();
+	
 }

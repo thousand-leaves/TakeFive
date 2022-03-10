@@ -9,8 +9,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -106,9 +108,18 @@ public class TaskControllerIntegrationTest {
 		this.mvc.perform(requestUpdate).andExpect(responseStatus).andExpect(reponseContent);
 	}
 	
+	// Delete Task Test
 	@Test
 	void deleteTaskTest() throws Exception {
-		this.mvc.perform(delete("/deleteTask/1")).andExpect(status().isAccepted());
+		this.mvc.perform(delete("/deleteTask/1"))
+		.andExpect(status().isAccepted());
 	}
-
+	
 }
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package com.thou.takefive.controller;
+ package com.thou.takefive.controller;
 
 import java.util.List;
 
@@ -62,10 +62,9 @@ public class TaskController {
 	        }
 	}  
 	    
-	    // RETURN RANDOM TASK
+	    // DO RANDOM TASK
 	    @GetMapping("/doRandomTask")
 	    public ResponseEntity<Task> doRandomTask() {
 	    	return new ResponseEntity<Task>(this.service.doRandomTask(), HttpStatus.OK);
 	    }
-
 }

@@ -100,6 +100,18 @@ public class PersonServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).deleteById(id);
 		}
 		
+		// Delete Person Fail Test
+		@Test
+		void testDeletePersonFail() {
+		    // GIVEN
+		    int id = 1;
+		    // WHEN
+		    Mockito.when(this.repo.existsById(id)).thenReturn(true);
+		    // THEN
+		    Assertions.assertThat(this.service.deletePerson(id)).isFalse();
+		    // verify
+		    Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+		}
 }
 
 
