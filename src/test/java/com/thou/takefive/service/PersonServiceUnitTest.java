@@ -77,7 +77,7 @@ public class PersonServiceUnitTest {
 			Person postUpdate = new Person(1, "George", "ian@outlook.com", 100, 5, 20, 40, 200, 500);
 			// When
 			Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(savedPerson));
-			Mockito.when(this.repo.save(postUpdate)).thenReturn(postUpdate);
+			Mockito.when(this.repo.save(Mockito.any(Person.class))).thenReturn(postUpdate);
 			// Then
 			Assertions.assertThat(this.service.updatePerson(id, preUpdate)).isEqualTo(postUpdate);
 			//Verify
@@ -100,6 +100,18 @@ public class PersonServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).deleteById(id);
 		}
 		
+		// Delete Person Fail Test
+		@Test
+		void testDeletePersonFail() {
+		    // GIVEN
+		    int id = 1;
+		    // WHEN
+		    Mockito.when(this.repo.existsById(id)).thenReturn(true);
+		    // THEN
+		    Assertions.assertThat(this.service.deletePerson(id)).isFalse();
+		    // verify
+		    Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+		}
 }
 
 

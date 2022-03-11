@@ -2,12 +2,11 @@ package com.thou.takefive.service;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thou.takefive.entity.Task;
+import com.thou.takefive.exceptions.TaskNotFoundException;
 import com.thou.takefive.repo.TaskRepo;
 
 @Service
@@ -32,13 +31,13 @@ public class TaskService {
 	
 	// READ TASK BY ID
 	public Task getById(Integer taskId) {
-		return this.repo.findById(taskId).orElseThrow(() -> new EntityNotFoundException("Can't find that task"));
+		return this.repo.findById(taskId).orElseThrow(() -> new TaskNotFoundException("Can't find that task"));
 	}
 	
 	// UPDATE TASK BY ID
 	public Task updateTask(Integer taskId, Task t) {
 		
-		// find person
+		// find task
 		Task foundTask = this.getById(taskId);
 		
 		// update info
@@ -55,8 +54,14 @@ public class TaskService {
 	}
 	
 	// DELETE TASK BY ID
-	public boolean deleteTask(Integer id) {
+	public boolean deleteTask(Integer id) throws TaskNotFoundException {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
 	}
+	
+	// RETURN RANDOM TASK
+	public Task doRandomTask() {
+		return this.repo.doRandomTask();
+	}
+	
 }

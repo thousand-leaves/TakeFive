@@ -77,7 +77,7 @@ public class TaskServiceUnitTest {
 		Task postUpdate = new Task(1, "clever", "Do this task", 10, 20, 30, 40, 50);
 		// When
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(savedTask));
-		Mockito.when(this.repo.save(postUpdate)).thenReturn(postUpdate);
+		Mockito.when(this.repo.save(Mockito.any(Task.class))).thenReturn(postUpdate);
 		// Then
 		Assertions.assertThat(this.service.updateTask(id, preUpdate)).isEqualTo(postUpdate);
 		//Verify
@@ -98,4 +98,31 @@ public class TaskServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 		Mockito.verify(this.repo, Mockito.times(1)).deleteById(id);
 	}
+	
+	// Delete Task Fail Test
+	@Test
+	void testDeleteTaskFail() {
+	    // GIVEN
+	    int id = 1;
+	    // WHEN
+	    Mockito.when(this.repo.existsById(id)).thenReturn(true);
+	    // THEN
+	    Assertions.assertThat(this.service.deleteTask(id)).isFalse();
+	    // verify
+	    Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+	}
+	
+	// Return Random Task Test
+	@Test
+	void testDoRandomTask() {
+		// Given
+		Task expected = new Task(1, "creative", "Do this task", 10, 20, 30, 40, 50);
+		// When
+		Mockito.when(this.repo.doRandomTask()).thenReturn(expected);
+		// Then
+		Assertions.assertThat(this.service.doRandomTask()).isEqualTo(expected);
+		// Verify
+		Mockito.verify(this.repo, Mockito.times(1)).doRandomTask();
+	}
+	
 }

@@ -106,9 +106,18 @@ public class TaskControllerIntegrationTest {
 		this.mvc.perform(requestUpdate).andExpect(responseStatus).andExpect(reponseContent);
 	}
 	
+	// Delete Task Test
 	@Test
 	void deleteTaskTest() throws Exception {
-		this.mvc.perform(delete("/deleteTask/1")).andExpect(status().isAccepted());
+		this.mvc.perform(delete("/deleteTask/1"))
+		.andExpect(status().isAccepted());
 	}
-
+	
 }
+
+
+
+
+
+
+
