@@ -60,7 +60,7 @@ public class TaskController {
 	        } else {
 	        	return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.NOT_FOUND);
 	        }
-	}  
+	    }  
 	    
 	    // DO RANDOM TASK
 	    @GetMapping("/doRandomTask")
